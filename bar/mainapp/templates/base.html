@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Shop Homepage</title>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <!-- Custom styles for this template -->
+  <link href="css/shop-homepage.css" rel="stylesheet">
+
+</head>
+<style>
+    body {
+    padding-top: 56px;
+    }
+</style>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'base' %}">Yankee Bar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'cart' %}">Корзина <span class="badge badge-pill badge-danger">{{ cart.products.count }}</span> </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+      <div class="col-lg-3">
+
+        <h1 class="my-4">Категории</h1>
+        <div class="list-group">
+          {% for category in categories %}
+          <a href="{{ category.url }}" class="list-group-item">{{ category.name }} ({{ category.count }})</a>
+          {% endfor %}
+        </div>
+
+      </div>
+      <!-- /.col-lg-3 -->
+
+      <div class="col-lg-9">
+        {% block content %}
+        {% if messages %}
+              {% for message in messages %}
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                      <strong>{{ message }}</strong>
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+              {% endfor %}
+        {% endif %}
+        <div class="col-lg-4 col-md-6 mb-4"></div>
+
+
+        <div class="row">
+          {% for product in products %}
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <a href="{{ product.get_absolute_url }}"><img class="card-img-top" src="{{ product.image.url }}" alt="Cocktails"></a>
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="{{ product.get_absolute_url }}">{{ product.title }}</a>
+                </h4>
+                <h5>{{ product.price }} грн.</h5>
+                <a href="{% url 'add_to_cart' ct_model=product.get_model_name slug=product.slug %}">
+                  <button class="btn btn-danger">Добавить в корзину</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <!-- /.row -->
+      {% endblock content %}
+      </div>
+      <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-4 bg-info">
+    <div class="container">
+      <p class="m-0 text-center text-white">г.Харьков ул.Сумская 14 inst.@yankeeusa</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+</html>
