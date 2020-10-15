@@ -1,6 +1,6 @@
 ## Project Summary
 
-The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item.
+The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item.The site has an email newsletter upon successful ordering
 
 ## Running this project
 
