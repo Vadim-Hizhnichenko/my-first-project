@@ -16,10 +16,12 @@ Clone or download this repository and open it in your editor of choice. In a ter
 virtualenv env
 ```
 
-That will create a new folder `env` in your project directory. Next activate it with this command on mac/linux:
+That will create a new folder `env` in your project directory. Next activate it with this command on windows:
 
 ```
-source env/bin/active
+mkdir project
+cd project
+python -m venv env
 ```
 
 Then install the project dependencies with
@@ -28,7 +30,7 @@ Then install the project dependencies with
 pip install -r requirements.txt
 ```
 
-Now you can run the project with this command
+Now you can enter 'bar' and run the project with this command
 
 ```
 python manage.py runserver
