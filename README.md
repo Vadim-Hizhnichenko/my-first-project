@@ -1,16 +1,35 @@
-# my-first-project
-#  Используемая технология
-* Django (версия 3.0)
-* Python (версия 3.8)
-* Bootstrap (версия 4)
-#  Настройка на локальной машине
- 1. Сначала клонируйте URL репозитория.
+## Project Summary
 
-*  git clone `https://github.com/Vadim-Hizhnichenko/my-first-project.git
-2. Теперь запустите и установите django с помощью pipenv.
+The website displays products. Users can add and remove products to/from their cart while also specifying the quantity of each item.
 
-*  `pip install django`
-*  `cd yankee # Войдите в каталог проекта`
-3. Запустите сервер django локально.
-*  `python3 manage.py runserver`
-4. Посетите http://127.0.0.1:8000/ в веб-браузере.
+## Running this project
+
+To get this project up and running you should start by having Python installed on your computer. It's advised you create a virtual environment to store your projects dependencies separately. You can install virtualenv with
+
+```
+pip install virtualenv
+```
+
+Clone or download this repository and open it in your editor of choice. In a terminal (mac/linux) or windows terminal, run the following command in the base directory of this project
+
+```
+virtualenv env
+```
+
+That will create a new folder `env` in your project directory. Next activate it with this command on mac/linux:
+
+```
+source env/bin/active
+```
+
+Then install the project dependencies with
+
+```
+pip install -r requirements.txt
+```
+
+Now you can run the project with this command
+
+```
+python manage.py runserver
+```
