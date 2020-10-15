@@ -1,13 +1,12 @@
 # my-first-project
 #  Используемая технология
-* Django (версия 2.2.6)
-* Python (версия 3.7.4)
-* Bootstrap (версия 4.3)
+* Django (версия 3.0)
+* Python (версия 3.8)
+* Bootstrap (версия 4)
 #  Настройка на локальной машине
-####  Предположим, наш проект будет называться Cryptocurrency-News-Site.
- 1. Сначала клонируйте этот проект или форк и клонируйте URL своего форка.
+ 1. Сначала клонируйте URL репозитория.
 
-*  `https://github.com/Vadim-Hizhnichenko/my-first-project.git
+*  git clone `https://github.com/Vadim-Hizhnichenko/my-first-project.git
 2. Теперь запустите и установите django с помощью pipenv.
 
 *  `pip install django`
