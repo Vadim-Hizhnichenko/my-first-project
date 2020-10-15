@@ -1,0 +1,17 @@
+autopep8==1.4.4
+certifi==2019.3.9
+chardet==3.0.4
+defusedxml==0.6.0
+Django==3.0
+django-allauth==0.39.1
+django-countries==5.3.3
+django-crispy-forms
+Pillow==6.2.2
+requests==2.21.0
+requests-oauthlib==1.2.0
+Django==3.1.1	
+asgiref==3.2.10
+djangorestframework==3.12.1
+pip==20.1.1
+pytz==2020.1
+setuptools==47.1.0
