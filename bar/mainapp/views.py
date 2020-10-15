@@ -4,11 +4,13 @@ from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import DetailView, View
-
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
 from .forms import OrderForm
 from .mixins import CategoryDetailMixin, CartMixin
-from .models import AlcoholCocktails, NonAlcoholCocktails, Category, LatestProducts, Customer, CartProduct, Cart
+from .models import AlcoholCocktails, NonAlcoholCocktails, Category, LatestProducts, Customer, CartProduct, Cart, Order
 from .utils import recalc_cart
+from django.conf import settings
 
 
 class BaseView(CartMixin, View):
@@ -143,6 +145,7 @@ class CheckoutView(CartMixin, View):
 
 class MakeOrderView(CartMixin, View):
     """ Class build our order and collects info from Form"""
+
     @transaction.atomic
     def post(self, request, *args, **kwargs):
         form = OrderForm(request.POST or None)
@@ -157,6 +160,9 @@ class MakeOrderView(CartMixin, View):
             new_order.buying_type = form.cleaned_data['buying_type']
             new_order.order_date = form.cleaned_data['order_date']
             new_order.comment = form.cleaned_data['comment']
+            new_order.email = form.cleaned_data['email']
+            send_mail('Yankee Bar', 'Поступил заказ','settings.EMAIL_HOST_USER', [settings.EMAIL_HOST_USER], fail_silently=False)
+            send_mail('Yankee Bar', 'Ваш заказ оформлен', from_email=new_order.email,recipient_list=[new_order.email], fail_silently=False)
             new_order.save()
             self.cart.in_order = True
             self.cart.save()
@@ -166,5 +172,3 @@ class MakeOrderView(CartMixin, View):
             messages.add_message(request, messages.INFO, 'Спасибо за заказ! Наш менеджер свяжется с Вами')
             return HttpResponseRedirect('/')
         return HttpResponseRedirect('/checkout/')
-
-

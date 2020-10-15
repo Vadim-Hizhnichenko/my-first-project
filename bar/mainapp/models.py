@@ -207,6 +207,7 @@ class Order(models.Model):
                                    verbose_name='Тип заказа',
                                    choices=BUYING_TYPE_CHOICES,
                                    default=BUYING_TYPE_SELF)
+    email = models.EmailField(max_length=255, verbose_name='Почтовый ящик',null=True, blank=True)
     comment = models.TextField(verbose_name='Коментарий к заказу', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True, verbose_name='Дата создания заказа')
     order_date = models.DateField(verbose_name='Дата получения заказа', default=timezone.now)
