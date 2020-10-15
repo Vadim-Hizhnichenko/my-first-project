@@ -33,3 +33,6 @@ Now you can run the project with this command
 ```
 python manage.py runserver
 ```
+
+To enter the admin panel: login admin  password 987654321v
+
